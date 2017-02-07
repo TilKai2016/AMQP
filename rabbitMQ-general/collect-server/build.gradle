@@ -1,0 +1,25 @@
+apply from: JAVA_GRADLE
+
+buildscript {
+    repositories {
+        maven {
+            url 'http://maven.solarule.cn/artifactory/libs-release'
+        }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'org.springframework.boot'
+
+dependencies {
+    compile project(':collect-common')
+    compile('org.springframework.boot:spring-boot-devtools')
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')
+    compile('org.springframework.boot:spring-boot-starter-amqp')
+    compile('com.h2database:h2')
+
+    compile('com.alibaba:druid:1.0.27')
+    runtime('mysql:mysql-connector-java')
+}

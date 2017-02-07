@@ -1,0 +1,5 @@
+rootProject.name = 'rabbitMQ-general'
+include 'collect-client-demo'
+include 'collect-common'
+include 'collect-server'
+

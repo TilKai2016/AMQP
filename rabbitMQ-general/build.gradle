@@ -1,0 +1,63 @@
+group 'AMQP'
+version '1.0-SNAPSHOT'
+
+buildscript {
+    ext {
+        IDE_GRADLE = "$rootDir/gradle/idea.gradle"
+        JAVA_GRADLE = "$rootDir/gradle/java.gradle"
+        COMMON_GRADLE = "$rootDir/gradle/common.gradle"
+
+        springBootVersion = '1.4.3.RELEASE'
+        springShiroVersion = '1.4.0-RC2'
+        tsingyunBootVersion = '1.0.9'
+    }
+    repositories {
+        maven {
+            url 'http://maven.solarule.cn/artifactory/libs-release'
+        }
+    }
+    dependencies {
+        classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4+"
+    }
+}
+
+allprojects {
+    apply plugin: "com.jfrog.artifactory"
+    apply from: IDE_GRADLE
+
+    group = 'AMQP'
+    version = currentVersion
+
+    repositories {
+        maven {
+            url 'http://maven.solarule.cn/artifactory/libs-release'
+        }
+    }
+}
+
+artifactoryPublish.skip = true
+
+artifactory {
+    contextUrl = "${artifactory_contextUrl}"
+    publish {
+        repository {
+            repoKey = currentVersion.endsWith('SNAPSHOT') ? 'libs-snapshot-local' : 'libs-release-local'
+            maven = true
+            username = "${artifactory_user}"
+            password = "${artifactory_password}"
+        }
+        Defaults {
+            publishArtifacts = true
+            publications('mavenJava')
+            publishPom = true
+            publishIvy = false
+        }
+    }
+    resolve {
+        repository {
+            repoKey = 'libs-release'
+            maven = true
+        }
+    }
+}
+
