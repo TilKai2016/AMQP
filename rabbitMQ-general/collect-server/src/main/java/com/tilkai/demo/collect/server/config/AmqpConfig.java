@@ -19,6 +19,9 @@ public class AmqpConfig {
 
     @Bean
     public Queue fooQueue() {
-        return new Queue("demo.data");
+        return new Queue("demo.foo");
     }
+
+    @Bean
+    public Queue tiQueue() {return new Queue("demo.ti");}
 }

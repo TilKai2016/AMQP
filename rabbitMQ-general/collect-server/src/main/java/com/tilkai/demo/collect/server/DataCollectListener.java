@@ -16,11 +16,11 @@ import java.util.Date;
  * @author tilkai
  */
 @Component
-@RabbitListener(queues = "demo.data")
+@RabbitListener(queues = {"demo.foo", "demo.ti"})
 public class DataCollectListener {
 
     @RabbitHandler
-    public void process(@Payload String foo) {System.out.println(new Date() + ":" + foo);}
+    public void process(@Payload String foo) {System.out.println(new Date() + " : " + foo);}
 
     @RabbitHandler
     public void process(@Payload TestModel model) {

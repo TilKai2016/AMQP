@@ -34,9 +34,11 @@ public class Client {
 
         @Scheduled(fixedDelay = 1000L)
         public void send() {
-            this.rabbitTemplate.convertAndSend("demo.data", "hello");
-            this.rabbitTemplate.convertAndSend("demo.data", new TestModel("hello", "world"));
-            System.out.println(this.rabbitTemplate.convertSendAndReceive("demo.data", 100));
+            this.rabbitTemplate.convertAndSend("demo.foo", "hello, foo!");
+            this.rabbitTemplate.convertAndSend("demo.foo", new TestModel("hello", "world"));
+            System.out.println(this.rabbitTemplate.convertSendAndReceive("demo.foo", 100));
+
+            this.rabbitTemplate.convertAndSend("demo.ti", "hello, ti!");
         }
     }
 }
