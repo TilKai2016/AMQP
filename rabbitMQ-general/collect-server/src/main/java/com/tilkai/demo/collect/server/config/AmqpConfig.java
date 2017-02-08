@@ -19,7 +19,7 @@ public class AmqpConfig {
 
     @Bean
     public Queue fooQueue() {
-        return new Queue("demo.foo");
+        return new Queue("demo.foo"); // 该构造函数实例化一个持久存在的，不排他的，不自动删除的队列。所谓不排他即其他用户可见、可访问的队列。
     }
 
     @Bean
