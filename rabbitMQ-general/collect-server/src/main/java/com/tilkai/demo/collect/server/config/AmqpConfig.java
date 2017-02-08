@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * Created by tilkai on 2017/2/7.
+ * @author tilkai
  */
 @Configuration
 public class AmqpConfig {

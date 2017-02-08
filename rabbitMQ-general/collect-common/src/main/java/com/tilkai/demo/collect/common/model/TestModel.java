@@ -1,7 +1,7 @@
 package com.tilkai.demo.collect.common.model;
 
 /**
- * Created by tilkai on 2017/2/7.
+ * @author tilkai
  */
 public class TestModel {
     protected String name;
