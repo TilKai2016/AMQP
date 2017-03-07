@@ -40,7 +40,8 @@ public class Client {
 //
 //            this.rabbitTemplate.convertAndSend("demo.ti", "hello, ti!");
 
-            this.rabbitTemplate.convertAndSend("spring-boot", "Hello from RabbitMQ!");
+            this.rabbitTemplate.convertAndSend("directExchange","fooRoutingKey", "Hello 1 from RabbitMQ!");
+            this.rabbitTemplate.convertAndSend("directExchange","tiRoutingKey", "Hello 2 from RabbitMQ!");
         }
     }
 }
