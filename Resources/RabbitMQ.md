@@ -201,3 +201,4 @@ Message<?> message = toMessagingMessage(amqpMessage);
 [RabbitMQ：Publisher的消息确认机制 #49](https://github.com/pzxwhc/MineKnowContainer/issues/49)
 
 
+
